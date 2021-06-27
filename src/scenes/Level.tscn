@@ -15,6 +15,7 @@ script = ExtResource( 2 )
 [node name="Graph" type="GraphEdit" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+right_disconnects = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
