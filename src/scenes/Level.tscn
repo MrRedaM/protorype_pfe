@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/scenes/Graph.gd" type="Script" id=1]
+[ext_resource path="res://test.vs" type="Script" id=2]
+[ext_resource path="res://src/scenes/IfNode.gd" type="Script" id=3]
+[ext_resource path="res://src/scenes/VariableNode.gd" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://src/scenes/ResultNode.gd" type="Script" id=6]
+
+[node name="Level" type="Node"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Graph" type="GraphEdit" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VariableNode" type="GraphNode" parent="CanvasLayer/Graph"]
+margin_left = 100.0
+margin_top = 200.0
+margin_right = 271.0
+margin_bottom = 270.0
+mouse_filter = 1
+title = "Variable"
+offset = Vector2( 100, 200 )
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/Graph/VariableNode"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 155.0
+margin_bottom = 64.0
+text = "boolean"
+
+[node name="IfNode" type="GraphNode" parent="CanvasLayer/Graph"]
+margin_left = 400.0
+margin_top = 200.0
+margin_right = 534.0
+margin_bottom = 289.0
+mouse_filter = 1
+title = "If"
+offset = Vector2( 400, 200 )
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = true
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color( 1, 1, 1, 1 )
+slot/2/right_enabled = true
+slot/2/right_type = 0
+slot/2/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Graph/IfNode"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 118.0
+margin_bottom = 38.0
+text = "condition"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Graph/IfNode"]
+margin_left = 16.0
+margin_top = 39.0
+margin_right = 118.0
+margin_bottom = 53.0
+text = "true"
+align = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/Graph/IfNode"]
+margin_left = 16.0
+margin_top = 54.0
+margin_right = 118.0
+margin_bottom = 68.0
+text = "false"
+align = 2
+
+[node name="ResultNode" type="GraphNode" parent="CanvasLayer/Graph"]
+margin_left = 700.0
+margin_top = 150.0
+margin_right = 796.0
+margin_bottom = 244.0
+mouse_filter = 1
+title = "Result"
+offset = Vector2( 700, 150 )
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Graph/ResultNode"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 80.0
+margin_bottom = 88.0
+texture = ExtResource( 5 )
+
+[node name="ResultNode1" type="GraphNode" parent="CanvasLayer/Graph"]
+margin_left = 700.0
+margin_top = 300.0
+margin_right = 796.0
+margin_bottom = 394.0
+mouse_filter = 1
+title = "Result"
+offset = Vector2( 700, 300 )
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Graph/ResultNode1"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 80.0
+margin_bottom = 88.0
+texture = ExtResource( 5 )
+
+[connection signal="connection_request" from="CanvasLayer/Graph" to="CanvasLayer/Graph" method="_on_Graph_connection_request"]
